@@ -1,0 +1,11 @@
+# Haxe exports
+Export/
+bin/
+
+# Documentation
+[dD]ocumentation/
+[dD]ocs
+haxedoc.xml
+
+# Temporary files
+temp/
