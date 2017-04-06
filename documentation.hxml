@@ -1,0 +1,13 @@
+# Generate single haxedoc.xml for haxelib
+
+-xml haxedoc.xml
+-D display
+LinkageLibrary
+-lib lime
+-lib openfl
+-as3 temp
+-swf-version 11.3
+
+--next
+
+-cmd haxelib run dox -i haxedoc.xml -in com -o docs
