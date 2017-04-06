@@ -1,0 +1,13 @@
+{
+  "name": "minimalcomps",
+  "url": "https://github.com/jasonsturges/minimalcomps-openfl",
+  "license": "MIT",
+  "tags": ["openfl"],
+  "description": "OpenFL port of Keith Peters Minimal Components",
+  "version": "0.1.0",
+  "releasenote": "Initial import to haxelib.",
+  "contributors": ["jasonsturges"],
+  "dependencies": {
+    "openfl": ""
+  }
+}
