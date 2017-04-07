@@ -26,8 +26,191 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+import openfl.display.Sprite;
+import openfl.events.MouseEvent;
+
+
 class RadioButton extends Component {
+    private var _back:Sprite;
+    private var _button:Sprite;
+    private var _selected:Bool = false;
+    private var _label:Label;
+    private var _labelText:String = "";
+    private var _groupName:String = "defaultRadioGroup";
+
+    private static var buttons:Array<RadioButton>;
+
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this RadioButton.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param label The string to use for the initial label of this component.
+     * @param defaultHandler The event handling function to handle the default event for this component (click in this case).
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, label:String = "", checked:Bool = false, defaultHandler:Dynamic = null) {
+        RadioButton.addButton(this);
+        _selected = checked;
+        _labelText = label;
+        super(parent, xpos, ypos);
+        if (defaultHandler != null) {
+            addEventListener(MouseEvent.CLICK, defaultHandler);
+        }
+    }
+
+    /**
+     * Static method to add the newly created RadioButton to the list of buttons in the group.
+     * @param rb The RadioButton to add.
+     */
+    private static function addButton(rb:RadioButton):Void {
+        if (buttons == null) {
+            buttons = [];
+        }
+        buttons.push(rb);
+    }
+
+    /**
+     * Unselects all RadioButtons in the group, except the one passed.
+     * This could use some rethinking or better naming.
+     * @param rb The RadioButton to remain selected.
+     */
+    private static function clear(rb:RadioButton):Void {
+        for (i in 0 ... buttons.length) {
+            if (buttons[i] != rb && buttons[i].groupName == rb.groupName) {
+                buttons[i].selected = false;
+            }
+        }
+    }
+
+    /**
+     * Initializes the component.
+     */
+    override private function init():Void {
+        super.init();
+
+        buttonMode = true;
+        useHandCursor = true;
+
+        addEventListener(MouseEvent.CLICK, onClick, false, 1);
+        selected = _selected;
+    }
+
+    /**
+     * Creates and adds the child display objects of this component.
+     */
+    override private function addChildren():Void {
+        _back = new Sprite();
+        _back.filters = [getShadow(2, true)];
+        addChild(_back);
+
+        _button = new Sprite();
+        _button.filters = [getShadow(1)];
+        _button.visible = false;
+        addChild(_button);
+
+        _label = new Label(this, 0, 0, _labelText);
+        draw();
+
+        mouseChildren = false;
+    }
+
+
+    ///////////////////////////////////
+    // public methods
+    ///////////////////////////////////
+
+    /**
+     * Draws the visual ui of the component.
+     */
+    override public function draw():Void {
+        super.draw();
+        _back.graphics.clear();
+        _back.graphics.beginFill(Style.BACKGROUND);
+        _back.graphics.drawCircle(5, 5, 5);
+        _back.graphics.endFill();
+
+        _button.graphics.clear();
+        _button.graphics.beginFill(Style.BUTTON_FACE);
+        _button.graphics.drawCircle(5, 5, 3);
+
+        _label.x = 12;
+        _label.y = (10 - _label.height) / 2;
+        _label.text = _labelText;
+        _label.draw();
+        _width = _label.width + 12;
+        _height = 10;
+    }
+
+
+    ///////////////////////////////////
+    // event handlers
+    ///////////////////////////////////
+
+    /**
+     * Internal click handler.
+     * @param event The MouseEvent passed by the system.
+     */
+    private function onClick(event:MouseEvent):Void {
+        selected = true;
+    }
+
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Sets / gets the selected state of this CheckBox.
+     */
+    public var selected(get, set):Bool;
+
+    public function set_selected(s:Bool):Bool {
+        _selected = s;
+        _button.visible = _selected;
+        if (_selected) {
+            RadioButton.clear(this);
+        }
+
+        return _selected;
+    }
+
+    public function get_selected():Bool {
+        return _selected;
+    }
+
+    /**
+     * Sets / gets the label text shown on this CheckBox.
+     */
+    public var label(get, set):String;
+
+    public function set_label(str:String):String {
+        _labelText = str;
+        invalidate();
+
+        return _labelText;
+    }
+
+    public function get_label():String {
+        return _labelText;
+    }
+
+    /**
+     * Sets / gets the group name, which allows groups of RadioButtons to function seperately.
+     */
+    public var groupName(get, set):String;
+
+    public function get_groupName():String {
+        return _groupName;
+    }
+
+    public function set_groupName(value:String):String {
+        _groupName = value;
+
+        return _groupName;
+    }
 }

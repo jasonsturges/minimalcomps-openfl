@@ -25,8 +25,202 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+import openfl.events.Event;
+import openfl.text.TextField;
+import openfl.text.TextFieldType;
+import openfl.text.TextFormat;
+
+
 class Text extends Component {
+    private var _tf:TextField;
+    private var _text:String = "";
+    private var _editable:Bool = true;
+    private var _panel:Panel;
+    private var _selectable:Bool = true;
+    private var _html:Bool = false;
+    private var _format:TextFormat;
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this Label.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param text The initial text to display in this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, text:String = "") {
+        this.text = text;
+        super(parent, xpos, ypos);
+        setSize(200, 100);
+    }
+
+    /**
+     * Initializes the component.
+     */
+    override private function init():Void {
+        super.init();
+    }
+
+    /**
+     * Creates and adds the child display objects of this component.
+     */
+    override private function addChildren():Void {
+        _panel = new Panel(this);
+        _panel.color = Style.TEXT_BACKGROUND;
+
+        _format = new TextFormat(Style.fontName, Style.fontSize, Style.LABEL_TEXT);
+
+        _tf = new TextField();
+        _tf.x = 2;
+        _tf.y = 2;
+        _tf.height = _height;
+        _tf.embedFonts = Style.embedFonts;
+        _tf.multiline = true;
+        _tf.wordWrap = true;
+        _tf.selectable = true;
+        _tf.type = TextFieldType.INPUT;
+        _tf.defaultTextFormat = _format;
+        _tf.addEventListener(Event.CHANGE, onChange);
+        addChild(_tf);
+    }
+
+
+    ///////////////////////////////////
+    // public methods
+    ///////////////////////////////////
+
+    /**
+     * Draws the visual ui of the component.
+     */
+    override public function draw():Void {
+        super.draw();
+
+        _panel.setSize(_width, _height);
+        _panel.draw();
+
+        _tf.width = _width - 4;
+        _tf.height = _height - 4;
+        if (_html) {
+            _tf.htmlText = _text;
+        }
+        else {
+            _tf.text = _text;
+        }
+        if (_editable) {
+            _tf.mouseEnabled = true;
+            _tf.selectable = true;
+            _tf.type = TextFieldType.INPUT;
+        }
+        else {
+            _tf.mouseEnabled = _selectable;
+            _tf.selectable = _selectable;
+            _tf.type = TextFieldType.DYNAMIC;
+        }
+        _tf.setTextFormat(_format);
+    }
+
+
+    ///////////////////////////////////
+    // event handlers
+    ///////////////////////////////////
+
+    /**
+     * Called when the text in the text field is manually changed.
+     */
+    private function onChange(event:Event):Void {
+        _text = _tf.text;
+        dispatchEvent(event);
+    }
+
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Gets / sets the text of this Label.
+     */
+    public var text(get, set):String;
+
+    public function set_text(value:String):String {
+        _text = value;
+        if (_text == null) _text = "";
+        invalidate();
+
+        return _text;
+    }
+
+    public function get_text():String {
+        return _text;
+    }
+
+    /**
+     * Returns a reference to the internal text field in the component.
+     */
+    public var textField(get, never):TextField;
+
+    public function get_textField():TextField {
+        return _tf;
+    }
+
+    /**
+     * Gets / sets whether or not this text component will be editable.
+     */
+    public var editable(get, set):Bool;
+
+    public function set_editable(value:Bool):Bool {
+        _editable = value;
+        invalidate();
+
+        return _editable;
+    }
+
+    public function get_editable():Bool {
+        return _editable;
+    }
+
+    /**
+     * Gets / sets whether or not this text component will be selectable. Only meaningful if editable is false.
+     */
+    public var selectable(get, set):Bool;
+
+    public function set_selectable(value:Bool):Bool {
+        _selectable = value;
+        invalidate();
+
+        return _selectable;
+    }
+
+    public function get_selectable():Bool {
+        return _selectable;
+    }
+
+    /**
+     * Gets / sets whether or not text will be rendered as HTML or plain text.
+     */
+    public var html(get, set):Bool;
+
+    public function set_html(value:Bool):Bool {
+        _html = value;
+        invalidate();
+
+        return _html;
+    }
+
+    public function get_html():Bool {
+        return _html;
+    }
+
+    /**
+     * Sets/gets whether this component is enabled or not.
+     */
+    public override function set_enabled(value:Bool):Bool {
+        super.enabled = value;
+        _tf.tabEnabled = value;
+
+        return super.enabled;
+    }
 }

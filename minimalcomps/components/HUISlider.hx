@@ -28,5 +28,54 @@
 
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class HUISlider extends UISlider {
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this HUISlider.
+     * @param x The x position to place this component.
+     * @param y The y position to place this component.
+     * @param label The string to use as the label for this component.
+     * @param defaultHandler The event handling function to handle the default event for this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, label:String = "", defaultHandler:Dynamic = null) {
+        _sliderClass = HSlider;
+        super(parent, xpos, ypos, label, defaultHandler);
+    }
+
+    /**
+     * Initializes the component.
+     */
+    override private function init():Void {
+        super.init();
+        setSize(200, 18);
+    }
+
+    /**
+		 * Centers the label when label text is changed.
+		 */
+    override private function positionLabel():Void {
+        _valueLabel.x = _slider.x + _slider.width + 5;
+    }
+
+
+    ///////////////////////////////////
+    // public methods
+    ///////////////////////////////////
+
+    /**
+     * Draws the visual ui of this component.
+    */
+    override public function draw():Void {
+        super.draw();
+        _slider.x = _label.width + 5;
+        _slider.y = height / 2 - _slider.height / 2;
+        _slider.width = width - _label.width - 50 - 10;
+
+        _valueLabel.x = _slider.x + _slider.width + 5;
+    }
+
 }

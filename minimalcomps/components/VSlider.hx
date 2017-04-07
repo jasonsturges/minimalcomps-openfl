@@ -25,8 +25,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class VSlider extends Slider {
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this Slider.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param defaultHandler The event handling function to handle the default event for this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultHandler:Dynamic = null) {
+        super(Slider.VERTICAL, parent, xpos, ypos, defaultHandler);
+    }
 }

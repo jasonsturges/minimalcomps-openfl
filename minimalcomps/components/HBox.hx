@@ -28,5 +28,141 @@
 
 package minimalcomps.components;
 
+import openfl.display.DisplayObject;
+import openfl.display.DisplayObjectContainer;
+import openfl.events.Event;
+
+
 class HBox extends Component {
+    private var _spacing:Float = 5.0;
+    private var _alignment:String = NONE;
+
+    public static inline var TOP:String = "top";
+    public static inline var BOTTOM:String = "bottom";
+    public static inline var MIDDLE:String = "middle";
+    public static inline var NONE:String = "none";
+
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this PushButton.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0) {
+        super(parent, xpos, ypos);
+    }
+
+    /**
+     * Override of addChild to force layout;
+     */
+    override public function addChild(child:DisplayObject):DisplayObject {
+        super.addChild(child);
+        child.addEventListener(Event.RESIZE, onResize);
+        draw();
+        return child;
+    }
+
+    /**
+     * Override of addChildAt to force layout;
+     */
+    override public function addChildAt(child:DisplayObject, index:Int):DisplayObject {
+        super.addChildAt(child, index);
+        child.addEventListener(Event.RESIZE, onResize);
+        draw();
+        return child;
+    }
+
+    /**
+     * Override of removeChild to force layout;
+     */
+    override public function removeChild(child:DisplayObject):DisplayObject {
+        super.removeChild(child);
+        child.removeEventListener(Event.RESIZE, onResize);
+        draw();
+        return child;
+    }
+
+    /**
+     * Override of removeChild to force layout;
+     */
+    override public function removeChildAt(index:Int):DisplayObject {
+        var child:DisplayObject = super.removeChildAt(index);
+        child.removeEventListener(Event.RESIZE, onResize);
+        draw();
+        return child;
+    }
+
+    private function onResize(event:Event):Void {
+        invalidate();
+    }
+
+    private function doAlignment():Void {
+        if (_alignment != NONE) {
+            for (i in 0 ... numChildren) {
+                var child:DisplayObject = getChildAt(i);
+                if (_alignment == TOP) {
+                    child.y = 0;
+                }
+                else if (_alignment == BOTTOM) {
+                    child.y = _height - child.height;
+                }
+                else if (_alignment == MIDDLE) {
+                    child.y = (_height - child.height) / 2;
+                }
+            }
+        }
+    }
+
+    /**
+     * Draws the visual ui of the component, in this case, laying out the sub components.
+     */
+    override public function draw():Void {
+        _width = 0;
+        _height = 0;
+        var xpos:Float = 0;
+        for (i in 0 ... numChildren) {
+            var child:DisplayObject = getChildAt(i);
+            child.x = xpos;
+            xpos += child.width;
+            xpos += _spacing;
+            _width += child.width;
+            _height = Math.max(_height, child.height);
+        }
+        doAlignment();
+        _width += _spacing * (numChildren - 1);
+        dispatchEvent(new Event(Event.RESIZE));
+    }
+
+    /**
+     * Gets / sets the spacing between each sub component.
+     */
+    public var spacing(get, set):Float;
+
+    public function set_spacing(value:Float):Float {
+        _spacing = value;
+        invalidate();
+
+        return _spacing;
+    }
+
+    public function get_spacing():Float {
+        return _spacing;
+    }
+
+    /**
+     * Gets / sets the vertical alignment of components in the box.
+     */
+    public var alignment(get, set):String;
+
+    public function set_alignment(value:String):String {
+        _alignment = value;
+        invalidate();
+
+        return _alignment;
+    }
+
+    public function get_alignment():String {
+        return _alignment;
+    }
 }

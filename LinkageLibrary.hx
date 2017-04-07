@@ -5,6 +5,7 @@ import minimalcomps.charts.Chart;
 import minimalcomps.charts.LineChart;
 import minimalcomps.charts.PieChart;
 import minimalcomps.components.Accordion;
+import minimalcomps.components.ArcButton;
 import minimalcomps.components.Calendar;
 import minimalcomps.components.CheckBox;
 import minimalcomps.components.ColorChooser;

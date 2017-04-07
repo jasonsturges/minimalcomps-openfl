@@ -28,5 +28,14 @@
 
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class VRangeSlider extends RangeSlider {
+
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultHandler:Dynamic = null) {
+        super(Slider.VERTICAL, parent, xpos, ypos, defaultHandler);
+    }
+
 }
+
