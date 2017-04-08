@@ -5,7 +5,7 @@
   "tags": ["openfl"],
   "description": "OpenFL port of Keith Peters Minimal Components",
   "version": "0.1.0",
-  "releasenote": "Initial import to haxelib.",
+  "releasenote": "Alpha release",
   "contributors": ["jasonsturges"],
   "dependencies": {
     "openfl": ""
