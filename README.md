@@ -53,6 +53,9 @@ In your project's source code, embed the font using the following class definiti
 
 Finally, add the following code to register the font and set the `Style` class `fontName`:
 
+    import openfl.Assets;
+    import openfl.text.Font;
+    
     #if js
         Style.fontName = Assets.getFont("pf_ronda_seven").fontName;
     #else
