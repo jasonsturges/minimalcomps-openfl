@@ -25,8 +25,86 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package minimalcomps.charts;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class BarChart extends Chart {
+    private var _spacing:Float = 2.0;
+    private var _barColor:UInt = 0x999999;
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this Label.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param data The array of numeric values to graph.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0, ypos:Float = 0, data:Array<Float> = null) {
+        super(parent, xpos, ypos, data);
+    }
+
+    /**
+     * Graphs the numeric data in the chart.
+     */
+    override private function drawChart():Void {
+        var border:Float = 2;
+        var totalSpace:Float = _spacing * _data.length;
+        var barWidth:Float = (_width - border - totalSpace) / _data.length;
+        var chartHeight:Float = _height - border;
+        _chartHolder.x = 0;
+        _chartHolder.y = _height;
+        var xpos:Float = border;
+        var max:Float = getMaxValue();
+        var min:Float = getMinValue();
+        var scale:Float = chartHeight / (max - min);
+        for (i in 0 ... _data.length) {
+            if (!Math.isNaN(_data[i])) {
+                _chartHolder.graphics.beginFill(_barColor);
+                _chartHolder.graphics.drawRect(xpos, 0, barWidth, (_data[i] - min) * -scale);
+                _chartHolder.graphics.endFill();
+            }
+            xpos += barWidth + _spacing;
+        }
+    }
+
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Sets/gets the amount of space shown between each bar. If this is too wide, bars may become invisible.
+     */
+    public var spacing(get, set):Float;
+
+    public function set_spacing(value:Float):Float {
+        _spacing = value;
+        invalidate();
+
+        return _spacing;
+    }
+
+    public function get_spacing():Float {
+        return _spacing;
+    }
+
+    /**
+     * Sets/gets the color of the bars.
+     */
+    public var barColor(get, set):UInt;
+
+    public function set_barColor(value:UInt):UInt {
+        _barColor = value;
+        invalidate();
+
+        return _barColor;
+    }
+
+    public function get_barColor():UInt {
+        return _barColor;
+    }
+
 }

@@ -28,6 +28,11 @@
 
 package minimalcomps.charts;
 
+import minimalcomps.components.Label;
+import openfl.display.DisplayObjectContainer;
+import openfl.display.Sprite;
+
+
 /**
  * Note: the data parameter of the PieChart, like the other charts, is an array.
  * It can be a simple array of Numbers where each number represents one slice of the pie.
@@ -38,4 +43,188 @@ package minimalcomps.charts;
  * - color: The color to make the slice.
  */
 class PieChart extends Chart {
+    private var _sprite:Sprite;
+    private var _beginningAngle:Float = 0;
+    private var _colors:Array<UInt> = [
+        0xff9999, 0xffff99, 0x99ff99, 0x99ffff, 0x9999ff, 0xff99ff,
+        0xffcccc, 0xffffcc, 0xccffcc, 0xccffff, 0xccccff, 0xffccff,
+        0xff6666, 0xffff66, 0x99ff66, 0x66ffff, 0x6666ff, 0xff66ff,
+        0xffffff
+    ];
+
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this Label.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param data The array of numeric values or objects to graph.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, data:Array<Float> = null) {
+        super(parent, xpos, ypos, data);
+    }
+
+    /**
+     * Initializes the component.
+     */
+    private override function init():Void {
+        super.init();
+        setSize(160, 120);
+    }
+
+    /**
+     * Creates and adds the child display objects of this component.
+     */
+    private override function addChildren():Void {
+        super.addChildren();
+        _sprite = new Sprite();
+        _panel.content.addChild(_sprite);
+    }
+
+    /**
+     * Graphs the numeric data in the chart.
+     */
+    private override function drawChart():Void {
+        var radius:Float = Math.min(width - 40, height - 40) / 2;
+        _sprite.x = width / 2;
+        _sprite.y = height / 2;
+        _sprite.graphics.clear();
+        _sprite.graphics.lineStyle(0, 0x666666, 1);
+        while (_sprite.numChildren > 0) _sprite.removeChildAt(0);
+
+        var total:Float = getDataTotal();
+        var startAngle:Float = _beginningAngle * Math.PI / 180;
+
+        for (i in 0 ... _data.length) {
+            var percent:Float = getValueForData(i) / total;
+            var endAngle:Float = startAngle + Math.PI * 2 * percent;
+            drawArc(startAngle, endAngle, radius, getColorForData(i));
+            makeLabel((startAngle + endAngle) * 0.5, radius + 10, getLabelForData(i));
+            startAngle = endAngle;
+        }
+    }
+
+    /**
+     * Creates and positions a single label.
+     * @property angle The angle in degrees to position this label.
+     * @property radius The distance from the center to position this label.
+     * @property text The text of the label.
+     */
+    private function makeLabel(angle:Float, radius:Float, text:String):Void {
+        var label:Label = new Label(_sprite, 0, 0, text);
+        label.x = Math.cos(angle) * radius;
+        label.y = Math.sin(angle) * radius - label.height / 2;
+        if (label.x < 0) {
+            label.x -= label.width;
+        }
+    }
+
+    /**
+     * Draws one slice of the pie.
+     * @property startAngle The beginning angle of the arc.
+     * @property endAngle The ending angle of the arc.
+     * @property radius The radius of the arc.
+     * @property color The color to draw the arc.
+     */
+    private function drawArc(startAngle:Float, endAngle:Float, radius:Float, color:UInt):Void {
+        _sprite.graphics.beginFill(color);
+        _sprite.graphics.moveTo(0, 0);
+        var i:Float = startAngle;
+
+        while (i < endAngle) {
+            _sprite.graphics.lineTo(Math.cos(i) * radius, Math.sin(i) * radius);
+            i += 0.01;
+        }
+        _sprite.graphics.lineTo(Math.cos(endAngle) * radius, Math.sin(endAngle) * radius);
+        _sprite.graphics.lineTo(0, 0);
+        _sprite.graphics.endFill();
+    }
+
+    /**
+     * Determines what label to use for the specified data.
+     * @property index The index of the data to get the label for.
+     */
+    private function getLabelForData(index:Int):String {
+        if (Reflect.hasField(_data[index], "label")) {
+            return _data[index].label;
+        }
+        var value:Float = Math.round(getValueForData(index) * Math.pow(10, _labelPrecision)) / Math.pow(10, _labelPrecision);
+        return Std.string(value);
+    }
+
+    /**
+     * Determines what color to use for the specified data.
+     * @property index The index of the data to get the color for.
+     */
+    private function getColorForData(index:Int):UInt {
+        if (Reflect.hasField(_data[index], "color")) {
+            return _data[index].color;
+        }
+        if (index < _colors.length) {
+            return _colors[index];
+        }
+        return Math.floor(Math.random() * 0xffffff);
+    }
+
+    /**
+     * Determines what value to use for the specified data.
+     * @property index The index of the data to get the value for.
+     */
+    private function getValueForData(index:Int):Float {
+        if (Std.is(_data[index], Float)) {
+            return _data[index];
+        }
+        if (Reflect.hasField(_data[index], "value")) {
+            return cast(_data[index].value, Float);
+        }
+        return Math.NaN;
+    }
+
+    /**
+     * Gets the sum of all the data values.
+     */
+    private function getDataTotal():Float {
+        var total:Float = 0;
+        for (i in 0 ... _data.length) {
+            total += getValueForData(i);
+        }
+        return total;
+    }
+
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Sets/gets the default array of colors to use for each arc.
+     */
+    public var colors(get, set):Array<UInt>;
+
+    public function set_colors(value:Array<UInt>):Array<UInt> {
+        _colors = value;
+        invalidate();
+
+        return _colors;
+    }
+
+    public function get_colors():Array<UInt> {
+        return _colors;
+    }
+
+    /**
+     * Sets/gets the angle at which to start the first slice.
+     */
+    public var beginningAngle(get, set):Float;
+
+    public function set_beginningAngle(value:Float):Float {
+        _beginningAngle = value;
+        invalidate();
+
+        return _beginningAngle;
+    }
+
+    public function get_beginningAngle():Float {
+        return _beginningAngle;
+    }
 }

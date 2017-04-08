@@ -28,5 +28,82 @@
 
 package minimalcomps.charts;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class LineChart extends Chart {
+    private var _lineWidth:Float = 1.0;
+    private var _lineColor:UInt = 0x999999;
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this Label.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param data The array of numeric values to graph.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, data:Array<Float> = null) {
+        super(parent, xpos, ypos, data);
+    }
+
+    /**
+     * Graphs the numeric data in the chart.
+     */
+    private override function drawChart():Void {
+        var border:Float = 2;
+        var lineWidth:Float = (_width - border) / (_data.length - 1);
+        var chartHeight:Float = _height - border;
+        _chartHolder.x = 0;
+        _chartHolder.y = _height;
+        var xpos:Float = border;
+        var max:Float = getMaxValue();
+        var min:Float = getMinValue();
+        var scale:Float = chartHeight / (max - min);
+        _chartHolder.graphics.lineStyle(_lineWidth, _lineColor);
+        _chartHolder.graphics.moveTo(xpos, (_data[0] - min) * -scale);
+        xpos += lineWidth;
+        for (i in 0 ... _data.length) {
+            if (!Math.isNaN(_data[i])) {
+                _chartHolder.graphics.lineTo(xpos, (_data[i] - min) * -scale);
+            }
+            xpos += lineWidth;
+        }
+    }
+
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Sets/gets the width of the line in the graph.
+     */
+    public var lineWidth(get, set):Float;
+
+    public function set_lineWidth(value:Float):Float {
+        _lineWidth = value;
+        invalidate();
+
+        return _lineWidth;
+    }
+
+    public function get_lineWidth():Float {
+        return _lineWidth;
+    }
+
+    /**
+     * Sets/gets the color of the line in the graph.
+     */
+    public var lineColor(get, set):UInt;
+
+    public function set_lineColor(value:UInt):UInt {
+        _lineColor = value;
+        invalidate();
+
+        return _lineColor;
+    }
+
+    public function get_lineColor():UInt {
+        return _lineColor;
+    }
 }
