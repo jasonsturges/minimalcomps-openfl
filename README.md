@@ -33,7 +33,7 @@ For inclusion into a Haxe project, add this library by updating your project.xml
         ...
     </project>
 
-To use the default [pf_ronda_seven](https://github.com/jasonsturges/minimalcomps-openfl/blob/master/Assets/Fonts/pf_ronda_seven.ttf) font in your project, download the font and place it within your project's Assets/Fonts folder:
+To use the default [pf_ronda_seven.ttf](https://github.com/jasonsturges/minimalcomps-openfl/blob/master/Assets/Fonts/pf_ronda_seven.ttf) font in your project, download the font and place it within your project's Assets/Fonts folder:
 
     [project root]/Assets/Fonts/pf_ronda_seven.ttf
 
