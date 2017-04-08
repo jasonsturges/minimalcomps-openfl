@@ -55,6 +55,7 @@ Finally, add the following code to register the font and set the `Style` class `
 
     import openfl.Assets;
     import openfl.text.Font;
+    import minimalcomps.components.Style;
     
     #if js
         Style.fontName = Assets.getFont("pf_ronda_seven").fontName;
