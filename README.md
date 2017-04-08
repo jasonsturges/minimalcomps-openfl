@@ -69,7 +69,7 @@ Finally, add the following code to register the font and set the `Style` class `
 
 There are two themes included: Light and Dark.
 
-To set either theme, call `setStyle()`:
+To set either theme, call `Style.setStyle()`:
 
     import minimalcomps.components.Style;
     
