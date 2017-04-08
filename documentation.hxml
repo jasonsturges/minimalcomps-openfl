@@ -10,4 +10,4 @@ LinkageLibrary
 
 --next
 
--cmd haxelib run dox -i haxedoc.xml -in com -o docs
+-cmd haxelib run dox -i haxedoc.xml -in minimalcomps -o docs
