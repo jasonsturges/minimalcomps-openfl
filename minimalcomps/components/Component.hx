@@ -47,8 +47,10 @@ class Component extends Sprite {
     private var _height:Float = 0.0;
     private var _tag:Int = -1;
     private var _enabled:Bool = true;
+    private var _invalidated:Bool = false;
 
     public static inline var DRAW:String = "draw";
+
 
     /**
      * Constructor
@@ -93,6 +95,10 @@ class Component extends Sprite {
      * Marks the component to be redrawn on the next frame.
      */
     private function invalidate():Void {
+        if (_invalidated) 
+            return;
+
+        _invalidated = true;
         addEventListener(Event.ENTER_FRAME, onInvalidate);
     }
 
@@ -148,6 +154,8 @@ class Component extends Sprite {
 		 */
     private function onInvalidate(event:Event):Void {
         removeEventListener(Event.ENTER_FRAME, onInvalidate);
+        _invalidated = false;
+
         draw();
     }
 
