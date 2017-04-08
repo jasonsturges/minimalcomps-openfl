@@ -227,7 +227,7 @@ class Calendar extends Panel {
      * Called when a date button is clicked. Selects that date.
      */
     private function onDayClick(event:MouseEvent):Void {
-        _day = event.target.tag;
+        _day = cast(event.target, Component).tag; // TODO
         setYearMonthDay(_year, _month, _day);
         dispatchEvent(new Event(Event.SELECT));
     }
