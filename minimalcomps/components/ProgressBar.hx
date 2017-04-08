@@ -25,8 +25,121 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+import openfl.display.Sprite;
+
+
 class ProgressBar extends Component {
+    private var _back:Sprite;
+    private var _bar:Sprite;
+    private var _value:Float = 0;
+    private var _max:Float = 1;
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this ProgressBar.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0) {
+        super(parent, xpos, ypos);
+    }
+
+
+    /**
+     * Initializes the component.
+     */
+    override private function init():Void {
+        super.init();
+        setSize(100, 10);
+    }
+
+    /**
+     * Creates and adds the child display objects of this component.
+     */
+    override private function addChildren():Void {
+        _back = new Sprite();
+        _back.filters = [getShadow(2, true)];
+        addChild(_back);
+
+        _bar = new Sprite();
+        _bar.x = 1;
+        _bar.y = 1;
+        _bar.filters = [getShadow(1)];
+        addChild(_bar);
+    }
+
+    /**
+     * Updates the size of the progress bar based on the current value.
+     */
+    private function update():Void {
+        _bar.scaleX = _value / _max;
+    }
+
+
+    ///////////////////////////////////
+    // public methods
+    ///////////////////////////////////
+
+    /**
+     * Draws the visual ui of the component.
+     */
+    override public function draw():Void {
+        super.draw();
+        _back.graphics.clear();
+        _back.graphics.beginFill(Style.BACKGROUND);
+        _back.graphics.drawRect(0, 0, _width, _height);
+        _back.graphics.endFill();
+
+        _bar.graphics.clear();
+        _bar.graphics.beginFill(Style.PROGRESS_BAR);
+        _bar.graphics.drawRect(0, 0, _width - 2, _height - 2);
+        _bar.graphics.endFill();
+        update();
+    }
+
+
+    ///////////////////////////////////
+    // event handlers
+    ///////////////////////////////////
+
+    ///////////////////////////////////
+    // getter/setters
+    ///////////////////////////////////
+
+    /**
+     * Gets / sets the maximum value of the ProgressBar.
+     */
+    public var maximum(get, set):Float;
+
+    public function set_maximum(value:Float):Float {
+        _max = value;
+        _value = Math.min(_value, _max);
+        update();
+
+        return _max;
+    }
+
+    public function get_maximum():Float {
+        return _max;
+    }
+
+    /**
+     * Gets / sets the current value of the ProgressBar.
+     */
+    public var value(get, set):Float;
+
+    public function set_value(value:Float):Float {
+        _value = Math.min(value, _max);
+        update();
+
+        return _value;
+    }
+
+    public function get_value():Float {
+        return _value;
+    }
 }

@@ -28,5 +28,182 @@
 
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+import openfl.display.Shape;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.geom.Rectangle;
+
+
 class ScrollPane extends Panel {
+    private var _vScrollbar:VScrollBar;
+    private var _hScrollbar:HScrollBar;
+    private var _corner:Shape;
+    private var _dragContent:Bool = true;
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this ScrollPane.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0) {
+        super(parent, xpos, ypos);
+    }
+
+    /**
+     * Initializes this component.
+     */
+    override private function init():Void {
+        super.init();
+        addEventListener(Event.RESIZE, onResize);
+        _background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
+        _background.useHandCursor = true;
+        _background.buttonMode = true;
+        setSize(100, 100);
+    }
+
+    /**
+		 * Creates and adds the child display objects of this component.
+		 */
+    override private function addChildren():Void {
+        super.addChildren();
+        _vScrollbar = new VScrollBar(null, width - 10, 0, onScroll);
+        _hScrollbar = new HScrollBar(null, 0, height - 10, onScroll);
+        addRawChild(_vScrollbar);
+        addRawChild(_hScrollbar);
+        _corner = new Shape();
+        _corner.graphics.beginFill(Style.BUTTON_FACE);
+        _corner.graphics.drawRect(0, 0, 10, 10);
+        _corner.graphics.endFill();
+        addRawChild(_corner);
+    }
+
+
+    ///////////////////////////////////
+    // public methods
+    ///////////////////////////////////
+
+    /**
+     * Draws the visual ui of the component.
+     */
+    override public function draw():Void {
+        super.draw();
+
+        var vPercent:Float = (_height - 10) / content.height;
+        var hPercent:Float = (_width - 10) / content.width;
+
+        _vScrollbar.x = width - 10;
+        _hScrollbar.y = height - 10;
+
+        if (hPercent >= 1) {
+            _vScrollbar.height = height;
+            _mask.height = height;
+        }
+        else {
+            _vScrollbar.height = height - 10;
+            _mask.height = height - 10;
+        }
+        if (vPercent >= 1) {
+            _hScrollbar.width = width;
+            _mask.width = width;
+        }
+        else {
+            _hScrollbar.width = width - 10;
+            _mask.width = width - 10;
+        }
+        _vScrollbar.setThumbPercent(vPercent);
+        _vScrollbar.maximum = Math.max(0, content.height - _height + 10);
+        _vScrollbar.pageSize = Math.floor(_height - 10);
+
+        _hScrollbar.setThumbPercent(hPercent);
+        _hScrollbar.maximum = Math.max(0, content.width - _width + 10);
+        _hScrollbar.pageSize = Math.floor(_width - 10);
+
+        _corner.x = width - 10;
+        _corner.y = height - 10;
+        _corner.visible = (hPercent < 1) && (vPercent < 1);
+        content.x = -_hScrollbar.value;
+        content.y = -_vScrollbar.value;
+    }
+
+    /**
+     * Updates the scrollbars when content is changed. Needs to be done manually.
+     */
+    public function update():Void {
+        invalidate();
+    }
+
+
+    ///////////////////////////////////
+    // event handlers
+    ///////////////////////////////////
+
+    /**
+     * Called when either scroll bar is scrolled.
+     */
+    private function onScroll(event:Event):Void {
+        content.x = -_hScrollbar.value;
+        content.y = -_vScrollbar.value;
+    }
+
+    private function onResize(event:Event):Void {
+        invalidate();
+    }
+
+    private function onMouseGoDown(event:MouseEvent):Void {
+        content.startDrag(false, new Rectangle(0, 0, Math.min(0, _width - content.width - 10), Math.min(0, _height - content.height - 10)));
+        stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        stage.addEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
+    }
+
+    private function onMouseMove(event:MouseEvent):Void {
+        _hScrollbar.value = -content.x;
+        _vScrollbar.value = -content.y;
+    }
+
+    private function onMouseGoUp(event:MouseEvent):Void {
+        content.stopDrag();
+        stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseGoUp);
+    }
+
+
+    public var dragContent(get, set):Bool;
+
+    public function set_dragContent(value:Bool):Bool {
+        _dragContent = value;
+        if (_dragContent) {
+            _background.addEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
+            _background.useHandCursor = true;
+            _background.buttonMode = true;
+        }
+        else {
+            _background.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseGoDown);
+            _background.useHandCursor = false;
+            _background.buttonMode = false;
+        }
+
+        return _dragContent;
+    }
+
+    public function get_dragContent():Bool {
+        return _dragContent;
+    }
+
+    /**
+     * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.
+     */
+    public var autoHideScrollBar(get, set):Bool;
+
+    public function set_autoHideScrollBar(value:Bool):Bool {
+        _vScrollbar.autoHide = value;
+        _hScrollbar.autoHide = value;
+
+        return value;
+    }
+
+    public function get_autoHideScrollBar():Bool {
+        return _vScrollbar.autoHide;
+    }
 }

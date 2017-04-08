@@ -28,5 +28,19 @@
 
 package minimalcomps.components;
 
+import openfl.display.DisplayObjectContainer;
+
+
 class VScrollBar extends ScrollBar {
+
+    /**
+     * Constructor
+     * @param parent The parent DisplayObjectContainer on which to add this ScrollBar.
+     * @param xpos The x position to place this component.
+     * @param ypos The y position to place this component.
+     * @param defaultHandler The event handling function to handle the default event for this component (change in this case).
+     */
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultHandler:Dynamic = null) {
+        super(Slider.VERTICAL, parent, xpos, ypos, defaultHandler);
+    }
 }

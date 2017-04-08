@@ -33,6 +33,7 @@ import minimalcomps.components.RangeSlider;
 import minimalcomps.components.RotarySelector;
 import minimalcomps.components.ScrollBar;
 import minimalcomps.components.ScrollPane;
+import minimalcomps.components.ScrollSlider;
 import minimalcomps.components.Slider;
 import minimalcomps.components.Style;
 import minimalcomps.components.Text;
