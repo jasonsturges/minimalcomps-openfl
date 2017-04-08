@@ -2,6 +2,8 @@
 
 OpenFL port of Keith Peters Minimal Components.
 
+[API Documentation](http://jasonsturges.com/minimalcomps-openfl)
+
 
 ## Installation
 
