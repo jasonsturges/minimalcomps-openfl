@@ -64,7 +64,21 @@ Finally, add the following code to register the font and set the `Style` class `
         Style.fontName = (new RondaSevenFont()).fontName;
     #end
     
+
+## Themes
+
+There are two themes included: Light and Dark.
+
+To set either theme, call `setStyle()`:
+
+    import minimalcomps.components.Style;
     
+    Style.setStyle(Style.DARK);
+    Style.setStyle(Style.LIGHT);
+
+For additional configuration of custom styles, update properties of the `Style` class.
+
+
 ## Generating Dox Documentation
 
 To generate documentation using dox, execute:
