@@ -42,8 +42,8 @@ Update your project.xml to include the font definition:
     <project>
         ...
         <assets path="Assets/Fonts" rename="fonts" if="html5">
-		    <font path="pf_ronda_seven.ttf" id="pf_ronda_seven" />
- 	    </assets>
+            <font path="pf_ronda_seven.ttf" id="pf_ronda_seven" />
+        </assets>
         ...
     </project>
 
