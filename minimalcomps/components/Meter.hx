@@ -314,6 +314,7 @@ class Meter extends Component {
     public function set_label(value:String):String {
         _labelText = value;
         _label.text = _labelText;
+        invalidate();
 
         return _labelText;
     }
