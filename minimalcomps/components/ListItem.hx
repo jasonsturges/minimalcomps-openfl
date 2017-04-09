@@ -95,16 +95,17 @@ class ListItem extends Component {
         graphics.drawRect(0, 0, width, height);
         graphics.endFill();
 
-        if (_data == null) return;
+        if (_data == null)
+            return;
 
         if (Std.is(_data, String)) {
-            _label.text = cast(_data , String);
+            _label.text = cast(_data, String);
         }
-        else if (_data.hasOwnProperty("label") && Std.is(_data.label, String)) {
+        else if (Reflect.hasField(_data, "label") && Std.is(_data.label, String)) {
             _label.text = _data.label;
         }
         else {
-            _label.text = _data.toString();
+            _label.text = Std.string(_data);
         }
     }
 
