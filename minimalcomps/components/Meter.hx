@@ -263,6 +263,7 @@ class Meter extends Component {
         _maximum = value;
         _maxLabel.text = Std.string(_maximum);
         update();
+        invalidate();
 
         return _maximum;
     }
@@ -280,6 +281,7 @@ class Meter extends Component {
         _minimum = value;
         _minLabel.text = Std.string(_minimum);
         update();
+        invalidate();
 
         return _minimum;
     }
