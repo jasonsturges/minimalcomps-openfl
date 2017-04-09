@@ -99,11 +99,11 @@ class ComboBox extends Component {
         else if (Std.is(selectedItem, String)) {
             _labelButton.label = cast(selectedItem, String);
         }
-        else if (selectedItem.hasOwnProperty("label") && Std.is(selectedItem.label, String)) {
+        else if (Reflect.hasField(selectedItem, "label") && Std.is(selectedItem.label, String)) {
             _labelButton.label = selectedItem.label;
         }
         else {
-            _labelButton.label = selectedItem.toString();
+            _labelButton.label = Std.string(selectedItem);
         }
     }
 
