@@ -390,15 +390,15 @@ class ComboBox extends Component {
     /**
      * Sets / gets the list of items to be shown.
      */
-    public var items(get, set):Array<ListItem>;
+    public var items(get, set):Array<Dynamic>;
 
-    public function set_items(value:Array<ListItem>):Array<ListItem> {
+    public function set_items(value:Array<Dynamic>):Array<Dynamic> {
         _list.items = value;
 
         return _list.items;
     }
 
-    public function get_items():Array<ListItem> {
+    public function get_items():Array<Dynamic> {
         return _list.items;
     }
 
