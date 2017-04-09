@@ -4,7 +4,7 @@ OpenFL port of Keith Peters Minimal Components.
 
 [API Documentation](http://jasonsturges.com/minimalcomps-openfl)
 
-[MinimalComps OpenFL Designer]() is a compendium project enabling exploration of available components.
+[MinimalComps OpenFL Designer](https://github.com/jasonsturges/minimalcomps-openfl-designer) is a compendium project enabling exploration of available components.
 ![designer](http://labs.jasonsturges.com/openfl/minimalcomps/minimalcomps-designer3.gif)
 
 
