@@ -150,8 +150,8 @@ class Component extends Sprite {
     ///////////////////////////////////
 
     /**
-		 * Called one frame after invalidate is called.
-		 */
+     * Called one frame after invalidate is called.
+     */
     private function onInvalidate(event:Event):Void {
         removeEventListener(Event.ENTER_FRAME, onInvalidate);
         _invalidated = false;

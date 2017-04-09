@@ -69,8 +69,8 @@ class Calendar extends Panel {
     }
 
     /**
-		 * Creates and adds the child display objects of this component.
-		 */
+     * Creates and adds the child display objects of this component.
+     */
     private override function addChildren():Void {
         super.addChildren();
         for (i in 0 ... 6) {
@@ -104,11 +104,11 @@ class Calendar extends Panel {
     }
 
     /**
-		 * Gets the last day of the specfied month and year. Needed by layout.
-		 * @param month The month to get the last day of.
-		 * @param year The year in which the month is in (needed for leap years).
-		 * @return The last day of the month.
-		 */
+     * Gets the last day of the specfied month and year. Needed by layout.
+     * @param month The month to get the last day of.
+     * @param year The year in which the month is in (needed for leap years).
+     * @return The last day of the month.
+     */
     private function getEndDay(month:Int, year:Int):Int {
         switch(month)
         {

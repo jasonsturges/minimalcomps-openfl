@@ -113,8 +113,8 @@ class PushButton extends Component {
     ///////////////////////////////////
 
     /**
-		 * Draws the visual ui of the component.
-		 */
+     * Draws the visual ui of the component.
+     */
     override public function draw():Void {
         super.draw();
         _back.graphics.clear();

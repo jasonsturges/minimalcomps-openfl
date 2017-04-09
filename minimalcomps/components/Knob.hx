@@ -202,8 +202,8 @@ class Knob extends Component {
     ///////////////////////////////////
 
     /**
-		 * Internal handler for when user clicks on the knob. Starts tracking up/down motion of the mouse.
-		 */
+     * Internal handler for when user clicks on the knob. Starts tracking up/down motion of the mouse.
+     */
     private function onMouseGoDown(event:MouseEvent):Void {
         _startX = mouseX;
         _startY = mouseY;
@@ -212,8 +212,8 @@ class Knob extends Component {
     }
 
     /**
-		 * Internal handler for mouse move event. Updates value based on how far mouse has moved up or down.
-		 */
+     * Internal handler for mouse move event. Updates value based on how far mouse has moved up or down.
+     */
     private function onMouseMoved(event:MouseEvent):Void {
         var diff:Float;
         var range:Float;

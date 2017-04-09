@@ -64,8 +64,8 @@ class ScrollPane extends Panel {
     }
 
     /**
-		 * Creates and adds the child display objects of this component.
-		 */
+     * Creates and adds the child display objects of this component.
+     */
     override private function addChildren():Void {
         super.addChildren();
         _vScrollbar = new VScrollBar(null, width - 10, 0, onScroll);

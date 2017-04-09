@@ -55,8 +55,8 @@ class HUISlider extends UISlider {
     }
 
     /**
-		 * Centers the label when label text is changed.
-		 */
+     * Centers the label when label text is changed.
+     */
     override private function positionLabel():Void {
         _valueLabel.x = _slider.x + _slider.width + 5;
     }

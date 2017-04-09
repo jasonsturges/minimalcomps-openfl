@@ -271,15 +271,15 @@ class List extends Component {
     }
 
     /**
-		 * Called when the user scrolls the scroll bar.
-		 */
+     * Called when the user scrolls the scroll bar.
+     */
     private function onScroll(event:Event):Void {
         fillItems();
     }
 
     /**
-		 * Called when the mouse wheel is scrolled over the component.
-		 */
+     * Called when the mouse wheel is scrolled over the component.
+     */
     private function onMouseWheel(event:MouseEvent):Void {
         _scrollbar.value -= event.delta;
         fillItems();

@@ -66,8 +66,8 @@ class Panel extends Component {
     }
 
     /**
-		 * Creates and adds the child display objects of this component.
-		 */
+     * Creates and adds the child display objects of this component.
+     */
     override private function addChildren():Void {
         _background = new Sprite();
         super.addChild(_background);
