@@ -63,8 +63,7 @@ class UISlider extends Component {
      */
     override private function addChildren():Void {
         _label = new Label(this, 0, 0);
-        // TODO: Verify, and consider abstract base class for sliders
-        _slider = Type.createInstance(_sliderClass, [0, 0, onSliderChange]);
+        _slider = Type.createInstance(_sliderClass, [this, 0, 0, onSliderChange]);
         _valueLabel = new Label(this);
     }
 
