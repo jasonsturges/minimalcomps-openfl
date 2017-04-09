@@ -36,7 +36,7 @@ import openfl.events.MouseEvent;
 
 // TODO: Evaluate List<T> implementation
 class List extends Component {
-    private var _items:Array<ListItem>;
+    private var _items:Array<Dynamic>;
     private var _itemHolder:Sprite;
     private var _panel:Panel;
     private var _listItemHeight:Float = 20;
@@ -56,7 +56,7 @@ class List extends Component {
      * @param ypos The y position to place this component.
      * @param items An array of items to display in the list. Either strings or objects with label property.
      */
-    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, items:Array<ListItem> = null) {
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, items:Array<Dynamic> = null) {
         if (items != null) {
             _items = items;
         }
@@ -409,16 +409,16 @@ class List extends Component {
     /**
      * Sets / gets the list of items to be shown.
      */
-    public var items(get, set):Array<ListItem>;
+    public var items(get, set):Array<Dynamic>;
 
-    public function set_items(value:Array<ListItem>):Array<ListItem> {
+    public function set_items(value:Array<Dynamic>):Array<Dynamic> {
         _items = value;
         invalidate();
 
         return _items;
     }
 
-    public function get_items():Array<ListItem> {
+    public function get_items():Array<Dynamic> {
         return _items;
     }
 
