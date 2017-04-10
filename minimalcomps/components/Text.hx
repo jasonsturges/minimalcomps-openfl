@@ -217,7 +217,7 @@ class Text extends Component {
     /**
      * Sets/gets whether this component is enabled or not.
      */
-    public override function set_enabled(value:Bool):Bool {
+    override public function set_enabled(value:Bool):Bool {
         super.enabled = value;
         _tf.tabEnabled = value;
 

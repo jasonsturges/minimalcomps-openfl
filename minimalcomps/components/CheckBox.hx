@@ -167,7 +167,7 @@ class CheckBox extends Component {
     /**
      * Sets/gets whether this component will be enabled or not.
      */
-    public override function set_enabled(value:Bool):Bool {
+    override public function set_enabled(value:Bool):Bool {
         super.enabled = value;
         mouseChildren = false;
 

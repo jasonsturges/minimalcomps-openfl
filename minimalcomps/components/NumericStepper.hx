@@ -73,7 +73,7 @@ class NumericStepper extends Component {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         setSize(80, 16);
         _delayTimer = new Timer(DELAY_TIME, 1);
@@ -85,7 +85,7 @@ class NumericStepper extends Component {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         _valueText = new InputText(this, 0, 0, "0", onValueTextChange);
         _valueText.restrict = "-0123456789.";
         _minusBtn = new PushButton(this, 0, 0, "-");
@@ -120,7 +120,7 @@ class NumericStepper extends Component {
     /**
      * Draws the visual ui of the component.
      */
-    public override function draw():Void {
+    override public function draw():Void {
         _plusBtn.x = _width - 16;
         _minusBtn.x = _width - 32;
         _valueText.text = Std.string(Math.round(_value * Math.pow(10, _labelPrecision)) / Math.pow(10, _labelPrecision));

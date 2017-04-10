@@ -56,7 +56,7 @@ class ListItem extends Component {
     /**
      * Initilizes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
         setSize(100, 20);
@@ -65,7 +65,7 @@ class ListItem extends Component {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         _label = new Label(this, 5, 0);
         _label.draw();
@@ -79,7 +79,7 @@ class ListItem extends Component {
     /**
      * Draws the visual ui of the component.
      */
-    public override function draw():Void {
+    override public function draw():Void {
         super.draw();
         graphics.clear();
 

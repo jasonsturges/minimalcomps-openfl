@@ -61,7 +61,7 @@ class Calendar extends Panel {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         setSize(140, 140);
         var today:Date = Date.now();
@@ -71,7 +71,7 @@ class Calendar extends Panel {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         for (i in 0 ... 6) {
             for (j in 0 ... 7) {

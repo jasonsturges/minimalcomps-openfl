@@ -121,7 +121,7 @@ class ComboBox extends Component {
     // public methods
     ///////////////////////////////////
 
-    public override function draw():Void {
+    override public function draw():Void {
         super.draw();
         _labelButton.setSize(_width - _height + 1, _height);
         _labelButton.draw();

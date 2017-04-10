@@ -91,7 +91,7 @@ class Panel extends Component {
     /**
      * Overridden to add new child to content.
      */
-    public override function addChild(child:DisplayObject):DisplayObject {
+    override public function addChild(child:DisplayObject):DisplayObject {
         content.addChild(child);
         return child;
     }

@@ -60,12 +60,12 @@ class FPSMeter extends Component {
         addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
     }
 
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         _label = new Label(this, 0, 0);
     }
 
-    public override function draw():Void {
+    override public function draw():Void {
         _label.text = _prefix + Std.string(_fps);
     }
 

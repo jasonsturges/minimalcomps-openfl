@@ -67,7 +67,7 @@ class PieChart extends Chart {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         setSize(160, 120);
     }
@@ -75,7 +75,7 @@ class PieChart extends Chart {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         _sprite = new Sprite();
         _panel.content.addChild(_sprite);
@@ -84,7 +84,7 @@ class PieChart extends Chart {
     /**
      * Graphs the numeric data in the chart.
      */
-    private override function drawChart():Void {
+    override private function drawChart():Void {
         var radius:Float = Math.min(width - 40, height - 40) / 2;
         _sprite.x = width / 2;
         _sprite.y = height / 2;

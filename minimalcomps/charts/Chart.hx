@@ -62,7 +62,7 @@ class Chart extends Component {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         setSize(200, 100);
     }
@@ -70,7 +70,7 @@ class Chart extends Component {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         _panel = new Panel(this);
 
@@ -123,7 +123,7 @@ class Chart extends Component {
     /**
      * Draws the visual ui of the component.
      */
-    public override function draw():Void {
+    override public function draw():Void {
         super.draw();
         _panel.setSize(width, height);
         _panel.draw();

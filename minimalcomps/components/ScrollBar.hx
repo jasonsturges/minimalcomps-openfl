@@ -119,7 +119,7 @@ class ScrollBar extends Component {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         if (_orientation == Slider.HORIZONTAL) {
             setSize(100, 10);

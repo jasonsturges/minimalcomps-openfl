@@ -52,7 +52,7 @@ class Accordion extends Component {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         setSize(100, 120);
     }
@@ -60,7 +60,7 @@ class Accordion extends Component {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         _vbox = new VBox(this);
         _vbox.spacing = 0;
 

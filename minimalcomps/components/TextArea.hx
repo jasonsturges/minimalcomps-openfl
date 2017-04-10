@@ -50,7 +50,7 @@ class TextArea extends Text {
     /**
      * Initilizes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
     }
@@ -109,7 +109,7 @@ class TextArea extends Text {
     /**
      * Called when the text in the text field is manually changed.
      */
-    private override function onChange(event:Event):Void {
+    override private function onChange(event:Event):Void {
         super.onChange(event);
         updateScrollbar();
     }
@@ -140,7 +140,7 @@ class TextArea extends Text {
     /**
      * Sets/gets whether this component is enabled or not.
      */
-    public override function set_enabled(value:Bool):Bool {
+    override public function set_enabled(value:Bool):Bool {
         super.enabled = value;
         _tf.tabEnabled = value;
 

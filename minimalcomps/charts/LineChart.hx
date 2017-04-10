@@ -49,7 +49,7 @@ class LineChart extends Chart {
     /**
      * Graphs the numeric data in the chart.
      */
-    private override function drawChart():Void {
+    override private function drawChart():Void {
         var border:Float = 2;
         var lineWidth:Float = (_width - border) / (_data.length - 1);
         var chartHeight:Float = _height - border;

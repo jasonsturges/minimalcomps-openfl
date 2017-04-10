@@ -81,7 +81,7 @@ class RangeSlider extends Component {
     /**
      * Initializes the component.
      */
-    private override function init():Void {
+    override private function init():Void {
         super.init();
         if (_orientation == HORIZONTAL) {
             setSize(110, 10);
@@ -96,7 +96,7 @@ class RangeSlider extends Component {
     /**
      * Creates and adds the child display objects of this component.
      */
-    private override function addChildren():Void {
+    override private function addChildren():Void {
         super.addChildren();
         _back = new Sprite();
         _back.filters = [getShadow(2, true)];
