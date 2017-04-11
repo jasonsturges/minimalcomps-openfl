@@ -1,6 +1,6 @@
 # Minimal Components
 
-OpenFL port of Keith Peters Minimal Components.
+OpenFL port of Minimal Components by Keith Peters.
 
 [API Documentation](http://jasonsturges.com/minimalcomps-openfl)
 
