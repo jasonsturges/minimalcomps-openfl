@@ -29,6 +29,11 @@
 
 package minimalcomps.components;
 
+import openfl.Assets;
+import openfl.text.Font;
+
+@:font("Assets/Fonts/pf_ronda_seven.ttf") private class RondaSevenFont extends Font {}
+
 
 class Style {
     public static var TEXT_BACKGROUND:UInt = 0xFFFFFF;
@@ -53,9 +58,18 @@ class Style {
     public static inline var LIGHT:String = "light";
 
     /**
-     * Applies a preset style as a list of color values. Should be called before creating any components.
+     * Applies a preset style as a list of color values,
+     * and registers the default PF Ronda Seven font.
+     * Should be called before creating any components.
      */
     public static function setStyle(style:String):Void {
+        #if js
+        Style.fontName = Assets.getFont("pf_ronda_seven").fontName;
+        #else
+        Font.registerFont(RondaSevenFont);
+        Style.fontName = (new RondaSevenFont()).fontName;
+        #end
+
         switch(style)
         {
             case DARK:

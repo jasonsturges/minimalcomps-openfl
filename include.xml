@@ -2,5 +2,9 @@
 <project>
 
     <haxelib name="openfl" />
+    
+    <assets path="Assets/Fonts" rename="fonts" if="html5">
+		<font path="pf_ronda_seven.ttf" id="pf_ronda_seven" />
+	</assets>
 
 </project>
