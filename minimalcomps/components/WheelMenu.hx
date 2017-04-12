@@ -39,6 +39,9 @@ import openfl.events.MouseEvent;
 import openfl.filters.DropShadowFilter;
 
 
+/**
+ *  A radial menu that pops up around the mouse.
+ */
 class WheelMenu extends Component {
     private var _borderColor:UInt = 0xcccccc;
     private var _buttons:Array<ArcButton>;

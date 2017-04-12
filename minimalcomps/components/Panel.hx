@@ -33,6 +33,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.display.Sprite;
 
 
+/**
+ *  A rectangular panel. Can be used as a container for other components.
+ */
 class Panel extends Component {
     private var _mask:Sprite;
     private var _background:Sprite;

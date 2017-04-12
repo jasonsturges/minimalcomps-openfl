@@ -47,6 +47,9 @@ import openfl.geom.Matrix;
 import openfl.geom.Point;
 
 
+/**
+ *  A Color Chooser component, allowing textual input, a default gradient, or custom image.
+ */
 class ColorChooser extends Component {
 
     public static inline var TOP:String = "top";

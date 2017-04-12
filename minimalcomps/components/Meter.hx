@@ -34,6 +34,9 @@ import openfl.events.Event;
 import openfl.filters.DropShadowFilter;
 
 
+/**
+ *  A meter component similar to a voltage meter, with a dial and a needle that indicates a value.
+ */
 class Meter extends Component {
     private var _damp:Float = .8;
     private var _dial:Sprite;

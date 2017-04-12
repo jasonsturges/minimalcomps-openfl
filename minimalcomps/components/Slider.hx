@@ -35,6 +35,9 @@ import openfl.events.MouseEvent;
 import openfl.geom.Rectangle;
 
 
+/**
+ *  Abstract base slider class for HSlider and VSlider.
+ */
 class Slider extends Component {
     private var _handle:Sprite;
     private var _back:Sprite;

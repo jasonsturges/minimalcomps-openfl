@@ -36,6 +36,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.utils.Timer;
 
 
+/**
+ *  A component allowing for entering a numeric value with the keyboard, or by pressing up/down buttons.
+ */
 class NumericStepper extends Component {
 
     private static inline var DELAY_TIME:Int = 500;

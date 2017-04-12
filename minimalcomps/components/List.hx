@@ -3,7 +3,7 @@
  * Keith Peters
  * version 0.9.10
  * 
- * A scrolling list of selectable items. 
+ * A scrolling list of selectable items.
  * 
  * Copyright (c) 2011 Keith Peters
  * 
@@ -34,7 +34,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
-// TODO: Evaluate List<T> implementation
+/**
+ *  A scrolling list of selectable items.
+ */
 class List extends Component {
     private var _items:Array<Dynamic>;
     private var _itemHolder:Sprite;

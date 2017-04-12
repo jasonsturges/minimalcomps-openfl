@@ -33,6 +33,9 @@ import openfl.events.Event;
 import openfl.Lib;
 
 
+/**
+ *  An simple component showing the frames per second the current movie is running at.
+ */
 class FPSMeter extends Component {
     private var _label:Label;
     private var _startTime:Int;

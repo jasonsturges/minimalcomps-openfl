@@ -33,6 +33,9 @@ import openfl.display.Sprite;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A basic button component with a label.
+ */
 class PushButton extends Component {
     private var _back:Sprite;
     private var _face:Sprite;

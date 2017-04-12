@@ -35,6 +35,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.display.Shape;
 
 
+/**
+ *  A base chart component for graphing an array of numeric data.
+ */
 class Chart extends Component {
     private var _data:Array<Dynamic>;
     private var _chartHolder:Shape;

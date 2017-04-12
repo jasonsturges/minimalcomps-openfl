@@ -35,6 +35,9 @@ import openfl.events.MouseEvent;
 import openfl.geom.Rectangle;
 
 
+/**
+ *  A panel with scroll bars for scrolling content that is larger.
+ */
 class ScrollPane extends Panel {
     private var _vScrollbar:VScrollBar;
     private var _hScrollbar:HScrollBar;

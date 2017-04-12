@@ -34,6 +34,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A rotary selector component for choosing among different values.
+ */
 class RotarySelector extends Component {
     public static inline var ALPHABETIC:String = "alphabetic";
     public static inline var NUMERIC:String = "numeric";

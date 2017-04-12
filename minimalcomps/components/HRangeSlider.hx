@@ -31,6 +31,9 @@ package minimalcomps.components;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A horizontal slider with two handles for selecting a range of values.
+ */
 class HRangeSlider extends RangeSlider {
 
     public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultHandler:Dynamic = null) {

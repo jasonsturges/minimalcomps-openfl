@@ -31,6 +31,9 @@ package minimalcomps.charts;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A chart component for graphing an array of numeric data as a bar graph.
+ */
 class BarChart extends Chart {
     private var _spacing:Float = 2.0;
     private var _barColor:UInt = 0x999999;

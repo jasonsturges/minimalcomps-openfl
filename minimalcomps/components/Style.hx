@@ -35,6 +35,10 @@ import openfl.text.Font;
 @:font("Assets/Fonts/pf_ronda_seven.ttf") private class RondaSevenFont extends Font {}
 
 
+/**
+ *  A collection of style variables used by the components.
+ *  If you want to customize the colors of your components, change these values BEFORE instantiating any components.
+ */
 class Style {
     public static var TEXT_BACKGROUND:UInt = 0xFFFFFF;
     public static var BACKGROUND:UInt = 0xCCCCCC;

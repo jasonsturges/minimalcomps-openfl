@@ -33,6 +33,9 @@ import openfl.display.DisplayObject;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A layout container for vertically aligning other components.
+ */
 class VBox extends Component {
     private var _spacing:Float = 5;
     private var _alignment:String = NONE;

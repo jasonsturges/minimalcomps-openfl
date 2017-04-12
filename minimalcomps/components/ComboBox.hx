@@ -3,7 +3,7 @@
  * Keith Peters
  * version 0.9.10
  * 
- * A button that exposes a list of choices and displays the chosen item. 
+ * A button that exposes a list of choices and displays the chosen item.
  * 
  * Copyright (c) 2011 Keith Peters
  * 
@@ -36,6 +36,9 @@ import openfl.geom.Point;
 import openfl.geom.Rectangle;
 
 
+/**
+ *  A button that exposes a list of choices and displays the chosen item.
+ */
 class ComboBox extends Component {
     public static inline var TOP:String = "top";
     public static inline var BOTTOM:String = "bottom";

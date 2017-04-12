@@ -42,6 +42,9 @@ import openfl.events.Event;
 import openfl.filters.DropShadowFilter;
 
 
+/**
+ *  Base class for all components
+ */
 class Component extends Sprite {
     private var _width:Float = 0.0;
     private var _height:Float = 0.0;

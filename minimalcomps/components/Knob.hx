@@ -34,6 +34,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A knob component for choosing a numerical value.
+ */
 class Knob extends Component {
 
     public static inline var VERTICAL:String = "vertical";

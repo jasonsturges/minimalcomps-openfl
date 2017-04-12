@@ -31,6 +31,9 @@ package minimalcomps.components;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A vertical Slider with a label and value label.
+ */
 class VUISlider extends UISlider {
 
     /**

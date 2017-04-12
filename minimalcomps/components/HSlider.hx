@@ -31,6 +31,9 @@ package minimalcomps.components;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A Horizontal Slider component for choosing values.
+ */
 class HSlider extends Slider {
 
     /**

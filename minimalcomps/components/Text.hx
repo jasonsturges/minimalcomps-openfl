@@ -35,6 +35,9 @@ import openfl.text.TextFieldType;
 import openfl.text.TextFormat;
 
 
+/**
+ *  A Text component for displaying multiple lines of text.
+ */
 class Text extends Component {
     private var _tf:TextField;
     private var _text:String = "";

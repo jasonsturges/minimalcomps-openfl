@@ -34,6 +34,9 @@ import openfl.display.Sprite;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A basic radio button component, meant to be used in groups, where only one button in the group can be selected.
+ */
 class RadioButton extends Component {
     private var _back:Sprite;
     private var _button:Sprite;

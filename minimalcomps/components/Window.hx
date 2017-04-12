@@ -36,6 +36,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A draggable window. Can be used as a container for other components.
+ */
 class Window extends Component {
     private var _title:String;
     private var _titleBar:Panel;

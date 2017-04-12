@@ -33,6 +33,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.events.Event;
 
 
+/**
+ *  A layout container for vertically aligning other components.
+ */
 class HBox extends Component {
     private var _spacing:Float = 5.0;
     private var _alignment:String = NONE;

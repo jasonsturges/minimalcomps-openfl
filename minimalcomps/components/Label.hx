@@ -35,6 +35,9 @@ import openfl.text.TextFieldAutoSize;
 import openfl.text.TextFormat;
 
 
+/**
+ *  A Label component for displaying a single line of text.
+ */
 class Label extends Component {
     private var _autoSize:Bool = true;
     private var _text:String = "";

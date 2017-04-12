@@ -35,6 +35,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  Essentially a VBox full of Windows. Only one Window will be expanded at any time.
+ */
 class ArcButton extends Sprite {
     public var id:Int;
 

@@ -35,6 +35,9 @@ import openfl.events.MouseEvent;
 import openfl.geom.Rectangle;
 
 
+/**
+ *  Abstract base class for HRangeSlider and VRangeSlider.
+ */
 class RangeSlider extends Component {
     private var _back:Sprite;
     private var _highLabel:Label;

@@ -36,6 +36,9 @@ import openfl.events.TimerEvent;
 import openfl.utils.Timer;
 
 
+/**
+ *  Base class for HScrollBar and VScrollBar
+ */
 class ScrollBar extends Component {
     private static inline var DELAY_TIME:Int = 500;
     private static inline var REPEAT_TIME:Int = 100;

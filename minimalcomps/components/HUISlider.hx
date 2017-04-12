@@ -31,6 +31,9 @@ package minimalcomps.components;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A Horizontal slider with a label and a value label.
+ */
 class HUISlider extends UISlider {
 
     /**

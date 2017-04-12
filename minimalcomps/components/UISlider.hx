@@ -32,6 +32,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.events.Event;
 
 
+/**
+ *  A Slider with a label and value label. Abstract base class for VUISlider and HUISlider
+ */
 class UISlider extends Component {
     private var _label:Label;
     private var _valueLabel:Label;

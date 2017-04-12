@@ -32,6 +32,9 @@ import openfl.events.MouseEvent;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A single item in a list. 
+ */
 class ListItem extends Component {
     private var _data:Dynamic;
     private var _label:Label;

@@ -36,6 +36,9 @@ import openfl.geom.Matrix;
 import openfl.utils.Timer;
 
 
+/**
+ *  An indicator light that can be turned on, off, or set_to flash.
+ */
 class IndicatorLight extends Component {
     private var _color:UInt;
     private var _lit:Bool = false;

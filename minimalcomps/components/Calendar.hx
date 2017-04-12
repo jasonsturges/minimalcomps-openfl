@@ -39,6 +39,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  Calendar component for showing and selecting a date.
+ */
 class Calendar extends Panel {
     private var _dateLabel:Label;
     private var _day:Int;

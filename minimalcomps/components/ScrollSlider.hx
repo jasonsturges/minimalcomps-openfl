@@ -34,6 +34,9 @@ import openfl.events.Event;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  Base class for HScrollBar and VScrollBar
+ */
 class ScrollSlider extends Slider {
     private var _thumbPercent:Float = 1.0;
     private var _pageSize:Int = 1;

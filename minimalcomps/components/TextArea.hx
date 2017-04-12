@@ -33,6 +33,9 @@ import openfl.events.Event;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A Text component for displaying multiple lines of text with a scrollbar.
+ */
 class TextArea extends Text {
     private var _scrollbar:VScrollBar;
 

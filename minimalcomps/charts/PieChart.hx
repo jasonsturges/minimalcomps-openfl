@@ -34,6 +34,8 @@ import openfl.display.Sprite;
 
 
 /**
+ * A chart component for graphing an array of numeric data as a pie chart.
+ *  
  * Note: the data parameter of the PieChart, like the other charts, is an array.
  * It can be a simple array of Numbers where each number represents one slice of the pie.
  * It can also be an array of objects.

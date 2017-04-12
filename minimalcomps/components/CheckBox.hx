@@ -33,6 +33,9 @@ import openfl.display.Sprite;
 import openfl.events.MouseEvent;
 
 
+/**
+ *  A basic CheckBox component.
+ */
 class CheckBox extends Component {
     private var _back:Sprite;
     private var _button:Sprite;

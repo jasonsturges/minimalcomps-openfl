@@ -3,7 +3,7 @@
  * Keith Peters
  * version 0.9.10
  * 
- * A vertical scroll bar for use in other components. 
+ * A vertical scroll bar for use in other components.
  * 
  * Copyright (c) 2011 Keith Peters
  * 
@@ -31,6 +31,9 @@ package minimalcomps.components;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A vertical scroll bar for use in other components.
+ */
 class VScrollBar extends ScrollBar {
 
     /**

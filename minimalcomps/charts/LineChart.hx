@@ -31,6 +31,9 @@ package minimalcomps.charts;
 import openfl.display.DisplayObjectContainer;
 
 
+/**
+ *  A chart component for graphing an array of numeric data as a line graph.
+ */
 class LineChart extends Chart {
     private var _lineWidth:Float = 1.0;
     private var _lineColor:UInt = 0x999999;

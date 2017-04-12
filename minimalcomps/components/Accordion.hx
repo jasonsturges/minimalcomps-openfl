@@ -32,6 +32,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.events.Event;
 
 
+/**
+ *  Essentially a VBox full of Windows. Only one Window will be expanded at any time.
+ */
 class Accordion extends Component {
     private var _windows:Array<Window>;
     private var _winWidth:Float = 100;

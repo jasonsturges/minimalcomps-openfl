@@ -32,6 +32,9 @@ import openfl.display.DisplayObjectContainer;
 import openfl.display.Sprite;
 
 
+/**
+ *  A progress bar component for showing a changing value in relation to a total.
+ */
 class ProgressBar extends Component {
     private var _back:Sprite;
     private var _bar:Sprite;
