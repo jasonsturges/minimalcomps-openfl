@@ -4,8 +4,8 @@
   "license": "MIT",
   "tags": ["openfl", "ui-components"],
   "description": "OpenFL port of Minimal Components by Keith Peters",
-  "version": "0.9.1",
-  "releasenote": "Alpha release",
+  "version": "0.9.2",
+  "releasenote": "Beta release",
   "contributors": ["jasonsturges"],
   "dependencies": {
     "openfl": ""
