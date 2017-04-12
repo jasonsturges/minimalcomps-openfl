@@ -28,12 +28,12 @@
 
 package minimalcomps.components;
 
-import openfl.geom.Point;
-import openfl.geom.Rectangle;
 import openfl.display.DisplayObjectContainer;
 import openfl.display.Stage;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 
 
 class ComboBox extends Component {

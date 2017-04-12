@@ -35,9 +35,9 @@ package minimalcomps.components;
 
 import openfl.display.DisplayObjectContainer;
 import openfl.display.Sprite;
-import openfl.display.StageScaleMode;
 import openfl.display.Stage;
 import openfl.display.StageAlign;
+import openfl.display.StageScaleMode;
 import openfl.events.Event;
 import openfl.filters.DropShadowFilter;
 

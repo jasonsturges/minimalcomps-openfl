@@ -33,10 +33,10 @@
 
 package minimalcomps.components;
 
-import openfl.events.Event;
-import openfl.events.MouseEvent;
 import openfl.display.DisplayObjectContainer;
 import openfl.display.Shape;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 
 
 class Calendar extends Panel {

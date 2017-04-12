@@ -28,8 +28,8 @@
 
 package minimalcomps.components;
 
-import openfl.events.Event;
 import openfl.display.DisplayObjectContainer;
+import openfl.events.Event;
 
 
 class Accordion extends Component {
