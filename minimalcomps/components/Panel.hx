@@ -97,10 +97,26 @@ class Panel extends Component {
     }
 
     /**
+     * Overriden to remove child from content.
+     */
+    override public function removeChild (child:DisplayObject):DisplayObject {
+        content.removeChild(child);
+        return child;
+    }
+
+    /**
      * Access to super.addChild
      */
     public function addRawChild(child:DisplayObject):DisplayObject {
         super.addChild(child);
+        return child;
+    }
+
+    /**
+     * Access to super.removeChild
+     */
+    public function removeRawChild(child:DisplayObject):DisplayObject {
+        super.removeChild(child);
         return child;
     }
 
