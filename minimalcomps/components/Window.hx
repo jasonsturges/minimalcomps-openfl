@@ -338,8 +338,8 @@ class Window extends Component {
     /**
      * Gets the height of the component. A minimized window's height will only be that of its title bar.
      */
-    #if flash @:getter(height) #end override
-    public function get_height():Float {
+    #if flash @:getter(height) #end 
+    override public function get_height():Float {
         if (contains(_panel)) {
             return super.height;
         }
