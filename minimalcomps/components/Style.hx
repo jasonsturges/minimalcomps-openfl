@@ -67,9 +67,7 @@ class Style {
      * Should be called before creating any components.
      */
     public static function setStyle(style:String):Void {
-        #if js
-        Style.fontName = Assets.getFont("pf_ronda_seven").fontName;
-        #else
+        #if !js
         Font.registerFont(RondaSevenFont);
         Style.fontName = (new RondaSevenFont()).fontName;
         #end
