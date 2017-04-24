@@ -78,11 +78,9 @@ class PushButton extends Component {
     override private function addChildren():Void {
         _back = new Sprite();
         _back.filters = [getShadow(2, true)];
-        _back.mouseEnabled = false;
         addChild(_back);
 
         _face = new Sprite();
-        _face.mouseEnabled = false;
         _face.filters = [getShadow(1)];
         _face.x = 1;
         _face.y = 1;

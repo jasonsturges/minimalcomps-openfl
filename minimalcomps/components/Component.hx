@@ -64,6 +64,8 @@ class Component extends Sprite {
     public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0) {
         super();
 
+        mouseChildren = false;
+
         move(xpos, ypos);
         init();
         if (parent != null) {
@@ -239,7 +241,7 @@ class Component extends Sprite {
 
     public function set_enabled(value:Bool):Bool {
         _enabled = value;
-        mouseEnabled = mouseChildren = _enabled;
+        mouseEnabled = _enabled;
         tabEnabled = value;
         alpha = _enabled ? 1.0 : 0.5;
 
