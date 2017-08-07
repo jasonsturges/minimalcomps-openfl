@@ -45,7 +45,7 @@ class ComboBox extends Component {
 
     private var _defaultLabel:String = "";
     private var _dropDownButton:PushButton;
-    private var _items:Array<ListItem>;
+    private var _items:Array<Dynamic>;
     private var _labelButton:PushButton;
     private var _list:List;
     private var _numVisibleItems:Int = 6;
@@ -62,7 +62,7 @@ class ComboBox extends Component {
      * @param defaultLabel The label to show when no item is selected.
      * @param items An array of items to display in the list. Either strings or objects with label property.
      */
-    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultLabel:String = "", items:Array<ListItem> = null) {
+    public function new(parent:DisplayObjectContainer = null, xpos:Float = 0.0, ypos:Float = 0.0, defaultLabel:String = "", items:Array<Dynamic> = null) {
         _defaultLabel = defaultLabel;
         _items = items;
         addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
