@@ -97,7 +97,7 @@ class Component extends Sprite {
     /**
      * Marks the component to be redrawn on the next frame.
      */
-    private function invalidate():Void {
+	#if (openfl >= "8.0.0") override public #else private #end function invalidate():Void {
         if (_invalidated) 
             return;
 
